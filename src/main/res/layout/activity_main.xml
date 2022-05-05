@@ -65,11 +65,13 @@
                 android:layout_margin="12dp">
 
                 <LinearLayout
+                    android:id="@+id/StageTwo"
                     android:orientation="vertical"
                     android:padding="16dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:onClick="stageTwo">
 
                     <ImageView
                         android:layout_width="80dp"
@@ -98,11 +100,13 @@
                 android:layout_margin="12dp">
 
                 <LinearLayout
+                    android:id="@+id/StageThree"
                     android:orientation="vertical"
                     android:padding="16dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:onClick="stageThree">
 
                     <ImageView
                         android:layout_width="80dp"
@@ -131,11 +135,13 @@
                 android:layout_margin="12dp">
 
                 <LinearLayout
+                    android:id="@+id/StageFourth"
                     android:orientation="vertical"
                     android:padding="16dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:onClick="stageFourth">
 
                     <ImageView
                         android:layout_width="80dp"
@@ -164,11 +170,13 @@
                 android:layout_margin="12dp">
 
                 <LinearLayout
+                    android:id="@+id/StageFive"
                     android:orientation="vertical"
                     android:padding="16dp"
                     android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:onClick="stageFive">
 
                     <ImageView
                         android:layout_width="80dp"

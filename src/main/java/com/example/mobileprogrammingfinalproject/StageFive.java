@@ -1,6 +1,5 @@
 package com.example.mobileprogrammingfinalproject;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,19 +17,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class StageOne extends AppCompatActivity {
+public class StageFive extends AppCompatActivity {
 
     ProgressBar hp1, hp2;
     LinearLayout t1, t2, t3, t4, t5, t6, t7, t8, t9, btn_atk, potion, atkbuff, defbuff;
     ImageView img1, img2, img3, img4, img5, img6, img7, img8, img9;
     TextView tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, coin;
-    int amountC = 1000;
+    int amountC = 2000;
     int hpenemy = 1000;
     int hpplayer = 1000;
     int totalatkplayer = 0;
     int totaldefplayers = 0;
-    int totalatkenemy = 700;
-    int totaldefenemy = 540;
+    int totalatkenemy = 1100;
+    int totaldefenemy = 700;
     Champion warrior = new Champion(100, 70, 100);
     Champion archer = new Champion(200, 60, 150);
     Champion wizard = new Champion(300, 10, 200);
@@ -38,7 +37,7 @@ public class StageOne extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_stage_one);
+        setContentView(R.layout.activity_stage_five);
 
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -95,8 +94,47 @@ public class StageOne extends AppCompatActivity {
             btn_atk.setEnabled(false);
         }
         if(hpenemy <= 0){
-            Toast.makeText(StageOne.this, "You win", Toast.LENGTH_SHORT).show();
+            Toast.makeText(StageFive.this, "You win", Toast.LENGTH_SHORT).show();
             btn_atk.setEnabled(false);
+        }
+    }
+
+    public void clickBuff(View v){
+        int percent = 0;
+        switch (v.getId()){
+            case R.id.potion:
+                if (amountC < 200){
+                    Toast.makeText(StageFive.this, "Didn't have enough Money", Toast.LENGTH_SHORT);
+                }else{
+                    amountC -= 200;
+                    coin.setText(""+amountC);
+                    percent = (int) (1000 * 0.25);
+                    hpplayer += percent;
+                    hp2.setProgress(hpplayer);
+                }
+                break;
+            case R.id.atkbuff:
+                if (amountC < 100){
+                    Toast.makeText(StageFive.this, "Didn't have enough Money", Toast.LENGTH_SHORT);
+                }else{
+                    amountC -= 100;
+                    coin.setText(""+amountC);
+                    percent = (int) (totalatkplayer * 0.1);
+                    totalatkplayer += percent;
+                    atkbuff.setEnabled(false);
+                }
+                break;
+            case R.id.defbuff:
+                if (amountC < 100){
+                    Toast.makeText(StageFive.this, "Didn't have enough Money", Toast.LENGTH_SHORT);
+                }else {
+                    amountC -= 100;
+                    coin.setText("" + amountC);
+                    percent = (int) (totaldefenemy * 0.15);
+                    totaldefplayers += percent;
+                    defbuff.setEnabled(false);
+                }
+                break;
         }
     }
 
@@ -122,45 +160,6 @@ public class StageOne extends AppCompatActivity {
                     Color.RED, android.graphics.PorterDuff.Mode.SRC_IN);
         }
         check(hpplayer, hpenemy);
-    }
-
-    public void clickBuff(View v){
-        int percent = 0;
-        switch (v.getId()){
-            case R.id.potion:
-                if (amountC < 200){
-                    Toast.makeText(StageOne.this, "Didn't have enough Money", Toast.LENGTH_SHORT);
-                }else{
-                    amountC -= 200;
-                    coin.setText(""+amountC);
-                    percent = (int) (1000 * 0.25);
-                    hpplayer += percent;
-                    hp2.setProgress(hpplayer);
-                }
-                break;
-            case R.id.atkbuff:
-                if (amountC < 100){
-                    Toast.makeText(StageOne.this, "Didn't have enough Money", Toast.LENGTH_SHORT);
-                }else{
-                    amountC -= 100;
-                    coin.setText(""+amountC);
-                    percent = (int) (totalatkplayer * 0.1);
-                    totalatkplayer += percent;
-                    atkbuff.setEnabled(false);
-                }
-                break;
-            case R.id.defbuff:
-                if (amountC < 100){
-                    Toast.makeText(StageOne.this, "Didn't have enough Money", Toast.LENGTH_SHORT);
-                }else {
-                    amountC -= 100;
-                    coin.setText("" + amountC);
-                    percent = (int) (totaldefenemy * 0.15);
-                    totaldefplayers += percent;
-                    defbuff.setEnabled(false);
-                }
-                break;
-        }
     }
 
     public void clickChampion(View v){
@@ -196,15 +195,15 @@ public class StageOne extends AppCompatActivity {
     }
 
     public void chooseChampion(View v){
-        AlertDialog.Builder builder = new AlertDialog.Builder(StageOne.this, R.style.AlertDialogTheme);
-        View view = LayoutInflater.from(StageOne.this).inflate(
+        AlertDialog.Builder builder = new AlertDialog.Builder(StageFive.this, R.style.AlertDialogTheme);
+        View view = LayoutInflater.from(StageFive.this).inflate(
                 R.layout.layout_warning_dialog,(ConstraintLayout)findViewById(R.id.layoutDialogContainer)
         );
         builder.setView(view);
 
         final AlertDialog alertDialog = builder.create();
         if(amountC <= 0 || amountC < 100){
-            Toast.makeText(StageOne.this, "You don't have enough money", Toast.LENGTH_SHORT).show();
+            Toast.makeText(StageFive.this, "You don't have enough money", Toast.LENGTH_SHORT).show();
         }
         else{
             view.findViewById(R.id.btn_warrior).setOnClickListener(new View.OnClickListener() {
@@ -306,7 +305,7 @@ public class StageOne extends AppCompatActivity {
             });
         }
         if (amountC <= 0 || amountC < 150){
-            Toast.makeText(StageOne.this, "You don't have enough money", Toast.LENGTH_SHORT).show();
+            Toast.makeText(StageFive.this, "You don't have enough money", Toast.LENGTH_SHORT).show();
         }
         else{
             view.findViewById(R.id.btn_archer).setOnClickListener(new View.OnClickListener() {
@@ -399,7 +398,7 @@ public class StageOne extends AppCompatActivity {
             });
         }
         if (amountC <= 0 || amountC < 200){
-            Toast.makeText(StageOne.this, "You don't have enough money", Toast.LENGTH_SHORT).show();
+            Toast.makeText(StageFive.this, "You don't have enough money", Toast.LENGTH_SHORT).show();
         }
         else{
             view.findViewById(R.id.btn_wizard).setOnClickListener(new View.OnClickListener() {
