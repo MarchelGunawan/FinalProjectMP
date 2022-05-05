@@ -16,6 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileProgrammingFinalProject">
         <activity
+            android:name=".LoadingMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Credits"
+            android:exported="false" />
+        <activity
             android:name=".StageFive"
             android:exported="false" />
         <activity

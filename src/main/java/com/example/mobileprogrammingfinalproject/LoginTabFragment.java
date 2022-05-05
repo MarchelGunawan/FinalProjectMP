@@ -104,7 +104,7 @@ public class LoginTabFragment extends Fragment {
         }
         if(lgn){
             s = "";
-            Intent intent = new Intent(getActivity(), MainActivity.class);
+            Intent intent = new Intent(getActivity(), LoadingMenu.class);
             startActivity(intent);
         }
     }

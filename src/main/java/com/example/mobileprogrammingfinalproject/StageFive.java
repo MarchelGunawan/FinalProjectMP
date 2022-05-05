@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -96,6 +97,8 @@ public class StageFive extends AppCompatActivity {
         if(hpenemy <= 0){
             Toast.makeText(StageFive.this, "You win", Toast.LENGTH_SHORT).show();
             btn_atk.setEnabled(false);
+            Intent intent = new Intent(StageFive.this, Credits.class);
+            startActivity(intent);
         }
     }
 
