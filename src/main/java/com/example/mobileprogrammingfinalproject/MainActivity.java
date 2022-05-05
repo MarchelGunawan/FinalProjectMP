@@ -46,9 +46,8 @@ public class MainActivity extends AppCompatActivity {
         try {
             addresses = gdc.getFromLocation(la, lo, 1);
             if (addresses.size() > 0)
-                Toast.makeText(this, "You LogIn at "+addresses.get(0).getLocality(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You Login at "+addresses.get(0).getLocality(),Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
@@ -65,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void stageTwo(View v){
-        Intent i = new Intent(this, StageTwo.class);
-        startActivity(i);
+        Intent intent = new Intent(this, StageTwo.class);
+        startActivity(intent);
     }
 
     public void stageThree(View v){
